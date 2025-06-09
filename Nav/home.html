@@ -1,49 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-        }
-        #navigation-container,
-        #footer-container {
-            width: 100%;
-        }
-        /* Add any specific styling for your navigation and footer containers */
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100%;
+      font: 1rem helvetica, sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1616410731303-6affae095a0a?q=80&w=2501&auto=format&fit=crop&ixlib=rb-4.1.0');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      /* cursor: crosshair; */
+    }
+
+    .wrapper {
+      display: grid;
+      place-items: center;
+      margin: 40px auto;
+      padding: 1rem;
+      max-width: 600px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 12px;
+    }
+
+    .logo {
+      width: 40vmin;
+      height: 30vmin;
+      background: url('https://gist.githubusercontent.com/mondenoir/d6da82e3f052e43222a2a82848b7dd26/raw/fcca3c50abb242d7cd57f598c84a91c70a5e1b74/logo.svg') no-repeat center;
+      background-size: cover;
+      margin-bottom: 2rem;
+      mix-blend-mode: multiply;
+    }
+
+    .accordion {
+      width: 100%;
+      list-style: none;
+    }
+
+    .accordion > li {
+      margin-top: -2px;
+    }
+
+    .accordion > li:first-of-type {
+      margin-top: 0;
+    }
+
+    .accordion button {
+      width: 100%;
+      background-color: transparent;
+      font-size: 0.9rem;
+      line-height: 3.5;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      border: none;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      cursor: pointer;
+      text-align: left;
+      padding: 0 0.5rem;
+    }
+
+    .accordion-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      font-size: 0.8rem;
+      gap: 0.5rem 1rem;
+      padding: 1rem 0;
+    }
+
+    .accordion-list li {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-    <div id="navigation-container">
-        </div>
+  <!-- Navigation bar -->
+  <iframe src="nav.html" style="height: 200px;"></iframe>
 
-    <main>
-        <h1>Welcome to the Homepage</h1>
-        <p>This is the main content of your website.</p>
-        </main>
+  <!-- Accordion content wrapper -->
+  <div class="wrapper">
+    <div class="logo"></div>
 
-    <div id="footer-container">
-        </div>
+    <ul x-data="accordion" class="accordion">
+      <template x-for="(items, category) in menu" :key="category">
+        <li>
+          <button @click="toggle(category)">
+            <span x-text="category"></span>
+          </button>
+          <div x-show="activeItem === category && open" x-collapse.duration.800ms>
+            <ul class="accordion-list">
+              <template x-for="item in items" :key="item.name">
+                <li>
+                  <span x-text="item.name"></span>
+                  <span>$<span x-text="item.price"></span></span>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </li>
+      </template>
+    </ul>
+  </div>
 
-    <script>
-        async function loadContent(url, targetId) {
-            try {
-                const response = await fetch(url);
-                const html = await response.text();
-                document.getElementById(targetId).innerHTML = html;
-            } catch (error) {
-                console.error(`Error loading ${url}:`, error);
-                document.getElementById(targetId).innerHTML = '<p>Failed to load content.</p>';
-            }
+  <!-- Footer -->
+  <iframe src="footer.html" style="height: 100px;"></iframe>
+
+  <!-- AlpineJS Accordion Component Script -->
+  <script>
+    function registerComponent() {
+      Alpine.data('accordion', function () {
+        return {
+          activeItem: 'appetizers',
+          open: true,
+          menu: {
+            appetizers: [
+              { name: 'Caesar Salad', price: 8 },
+              { name: 'Spring Rolls', price: 6 },
+              { name: 'Stuffed Mushrooms', price: 9 },
+              { name: 'Zucchini Fritters', price: 12 }
+            ],
+            main: [
+              { name: 'Cedar-Plank Salmon', price: 18 },
+              { name: 'Chicken Lasagna', price: 15 },
+              { name: 'Grilled Spareribs', price: 30 }
+            ],
+            desserts: [
+              { name: 'Caramel Flan', price: 5 },
+              { name: 'Lemon Drizzle Cake', price: 4 }
+            ],
+            drinks: [
+              { name: 'Mojito', price: 6 },
+              { name: 'White Russian', price: 7 }
+            ],
+          },
+          toggle(item) {
+            this.activeItem = this.activeItem === item ? null : item;
+            this.open = true;
+          }
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadContent('./nav.html', 'navigation-container');
-            loadContent('./footer.html', 'footer-container');
-        });
-    </script>
+      });
+    }
+    document.addEventListener('alpine:init', registerComponent, false);
+  </script>
 </body>
 </html>

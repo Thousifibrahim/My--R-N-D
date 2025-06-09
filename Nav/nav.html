@@ -1,50 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title Here</title>
-    <meta name="description" content="A brief description of your website for SEO.">
-    <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: transparent;
+      /* border-bottom: 2px solid #eee; */
+    }
+
+    .logo img {
+        margin-top: 20px;
+      height: 80px;
+      width: auto;
+    }
+
+    .search-bar {
+      display: flex;
+      flex: 1;
+      max-width: 300px;
+      margin: 0 1rem;
+    }
+
+    .search-bar input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .search-bar button {
+      background-color: #63E6BE;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    .navigation-links,
+    .user-actions {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navigation-links a,
+    .user-actions a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: transparent;
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      border-radius: 6px;
+      z-index: 1000;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.3rem 0.5rem;
+      color: #333;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f3f3f3;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="home.html" class="logo">
-                <img src="./assets/logo.png" alt="Website Logo" height="50" width="130">
-            </a>
-            <div class="search-bar">
-                <label for="search-box" class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></label>
-                <input type="search" id="search-box" placeholder="Try Saree, Kurti / Search">
-                <button type="submit" id="search-btn">Search</button>
-            </div>
-            <ul class="navigation-links">
-                <li class="dropdown">
-                    <a href="#">Download App</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Android</a></li>
-                        <li><a href="#">iOS</a></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                </li>
-                <li class="navigation-item"><a href="#">Become Supplier</a></li>
-                <li class="navigation-item"><a href="#">Investor Relations</a></li>
-            </ul>
-            <ul class="user-actions">
-                <li class="user-item"><a href="#"><i class="fa-regular fa-user"></i> <span>Profile</span></a></li>
-                <li class="cart-item"><a href="#"><i class="fa-solid fa-cart-shopping"></i> <span>Cart</span></a></li>
-            </ul>
-        </nav>
-    </header>
+  <nav class="main-nav">
+    <a href="home.html" class="logo">
+      <img src="./assets/logo.png" alt="Website Logo" />
+    </a>
 
-    <main>
-        </main>
+    <div class="search-bar">
+      <input type="search" id="search-box" placeholder="Try shawarma , tandoori" />
+      <button type="submit" id="search-btn">Search</button>
+    </div>
 
-    <footer>
-        </footer>
+    <ul class="navigation-links">
+      <li class="dropdown">
+        <a href="#">Download</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Android</a></li>
+          <li><a href="#">iOS</a></li>
+          <li><a href="#">Other</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Branches</a></li>
+      <li><a href="#">Our story</a></li>
+    </ul>
+
+    <ul class="user-actions">
+      <li><a href="#"><i class="fa-regular fa-user"></i> Profile</a></li>
+      <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+    </ul>
+  </nav>
 </body>
 </html>
