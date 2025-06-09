@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at center, #0a0a0a, #000000 90%);
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.universe {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sun {
+  height: 120px;
+  width: 120px;
+  background: radial-gradient(circle, #ff9800, #ff5722);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+  box-shadow: 0 0 30px #ff5722;
+  z-index: 10;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: rotate linear infinite;
+}
+
+.planet {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.mercury-orbit {
+  height: 150px;
+  width: 150px;
+  animation-duration: 3s;
+}
+.mercury {
+  background: goldenrod;
+  transform: translate(75px, 0);
+}
+
+.venus-orbit {
+  height: 200px;
+  width: 200px;
+  animation-duration: 5s;
+}
+.venus {
+  background: yellowgreen;
+  transform: translate(100px, 0);
+}
+
+.earth-orbit {
+  height: 250px;
+  width: 250px;
+  animation-duration: 7s;
+}
+.earth {
+  background: skyblue;
+  transform: translate(125px, 0);
+}
+
+.mars-orbit {
+  height: 300px;
+  width: 300px;
+  animation-duration: 9s;
+}
+.mars {
+  background: red;
+  transform: translate(150px, 0);
+}
+
+.jupiter-orbit {
+  height: 370px;
+  width: 370px;
+  animation-duration: 12s;
+}
+.jupiter {
+  background: chocolate;
+  transform: translate(185px, 0);
+}
+
+.saturn-orbit {
+  height: 440px;
+  width: 440px;
+  animation-duration: 15s;
+}
+.saturn {
+  background: peru;
+  transform: translate(220px, 0);
+}
+
+.uranus-orbit {
+  height: 510px;
+  width: 510px;
+  animation-duration: 18s;
+}
+.uranus {
+  background: darkcyan;
+  transform: translate(255px, 0);
+}
+
+.neptune-orbit {
+  height: 580px;
+  width: 580px;
+  animation-duration: 21s;
+}
+.neptune {
+  background: royalblue;
+  transform: translate(290px, 0);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

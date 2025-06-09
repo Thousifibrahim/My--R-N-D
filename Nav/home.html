@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        #navigation-container,
+        #footer-container {
+            width: 100%;
+        }
+        /* Add any specific styling for your navigation and footer containers */
+    </style>
+</head>
+<body>
+    <div id="navigation-container">
+        </div>
+
+    <main>
+        <h1>Welcome to the Homepage</h1>
+        <p>This is the main content of your website.</p>
+        </main>
+
+    <div id="footer-container">
+        </div>
+
+    <script>
+        async function loadContent(url, targetId) {
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                document.getElementById(targetId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${url}:`, error);
+                document.getElementById(targetId).innerHTML = '<p>Failed to load content.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadContent('./nav.html', 'navigation-container');
+            loadContent('./footer.html', 'footer-container');
+        });
+    </script>
+</body>
+</html>

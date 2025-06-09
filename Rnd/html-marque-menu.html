@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Food Corner</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #ff9800;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .slider {
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .slide-track {
+      display: inline-block;
+      animation: scroll 25s linear infinite;
+    }
+
+    .slide-track img {
+      width: 200px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+      vertical-align: middle;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .menu-table {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .menu-item {
+      background: #1e1e1e;
+      padding: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+      background: #2a2a2a;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍽️ Food Corner</h1>
+
+  <div class="slider">
+    <div class="slide-track">
+      <img src="https://www.foodiesfeed.com/wp-content/uploads/2023/05/pizza-margherita-with-fresh-basil-400x180.jpg" />
+      <img src="https://www.foodiesfeed.com/wp-content/uploads/2023/05/coffee-bean-macro-1-400x180.jpg" />
+      <img src="https://www.foodiesfeed.com/wp-content/uploads/2023/03/cupcake-with-colorful-icing-400x180.jpg" />
+      <img src="https://www.foodiesfeed.com/wp-content/uploads/2023/05/pouring-lemonade-with-ice-400x180.jpg" />
+      <img src="https://www.foodiesfeed.com/wp-content/uploads/2023/05/pizza-margherita-with-fresh-basil-400x180.jpg" />
+      <img src="https://www.foodiesfeed.com/wp-content/uploads/2023/05/coffee-bean-macro-1-400x180.jpg" />
+    </div>
+  </div>
+
+  <div class="menu-table">
+    <div class="menu-item">🍗 Chicken Popcorn</div>
+    <div class="menu-item">🍗 Chicken Leg Piece</div>
+    <div class="menu-item">🍗 Chicken Wings</div>
+    <div class="menu-item">🔥 Peri Peri Chicken</div>
+  </div>
+</body>
+</html>

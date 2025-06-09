@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: white;
+}
+button:hover{
+    cursor: pointer;
+}
+
+#whatsapp-icon {
+  position: fixed;
+  bottom: 80px;
+  right: 50px;
+  z-index: 1000;
+}
+#three-button-hover {
+  border: 1px solid black; /* Move this from inline */
+  background-color: transparent; /* Move this from inline */
+  height: 40px;
+  border-radius: 5px;
+  width: 150px;
+  /* Add transition for a smooth hover effect */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#three-button-hover:hover {
+  color: white;
+  background-color: black;
+  border-color: black; /* Optionally change border on hover too */
+}
+
+#whatsapp-icon:hover {
+  transition-property: transform;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+  transform: scale(1.5);
+}
+#top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+
+main {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  height: 13vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+article {
+  height: inherit;
+  border-bottom: 1px solid white;
+  width: 90vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  width: 50%;
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.side {
+  width: 130px;
+}
+.ico{
+    color: white;
+}
+
+#txt-home{
+  position: absolute;
+  top: 140px;
+  left: 80px;
+}
+  
+#b-home{
+  border-radius: 5px; 
+  height: 40px;
+  width: 130px;
+  background-color: blue;
+  color: white;
+  border: none;
+}
+
+/* first section */
+#colunm {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#child1 {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#child1,
+.clmn,
+h2,
+button {
+  margin-top: 10px;
+  color: rgb(0, 0, 0); 
+}
+
+#sec {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+#sectext {
+  position: absolute;
+  top: 950px;
+  left: 80px;
+}
+
+
+#img1{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://bmw.scene7.com/is/image/BMW/iX:3to1?fmt=webp&wid=2560&hei=853");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#a-img1 {
+    transform: translateY(200px);
+    margin-left: 90px;
+}
+#img2{
+    background-size: contain;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://bmw.scene7.com/is/image/BMW/DI21_000048047_3000_3000:3to1?fmt=webp&wid=2560&hei=853");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#a-img2 {
+    transform: translateY(300px);
+    margin-left: 90px; 
+}
+#img3{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://bmw.scene7.com/is/image/BMW/iX_Banner1:3to1?fmt=webp&wid=2560&hei=853");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#a-img3 {
+    transform: translateY(300px);
+    margin-left: 90px;
+}
+.b-norm{
+    border: none;
+    background-color: transparent;
+    height: 40px;
+    width: 150px;
+    border: 1px solid wheat;
+    border-radius: 5px; 
+    color: white;
+}
+#sidelast{
+    padding-top: 40px;
+    height: 200px;
+    width: 650px;
+    position: relative;
+    left: 600px;
+    color: black;
+}
+#footnav{
+    height: 100px;
+    width: 400px;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+footer{
+    background-color: aliceblue;
+    height: 50vh;
+    width: 100vw;
+}
+table{
+    
+    width: inherit;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#socialfoot{
+    height: 100px;
+    width: 300px;
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.social{
+    color: black ;
+}
+
+#copyrights{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.By{
+    margin-left: 60px;
+}
+.others{
+    height: 100px;
+    width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+
+
+
