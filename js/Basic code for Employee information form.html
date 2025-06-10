@@ -1,62 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Employee Information</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payroll Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .totals {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
- <h1>Employee Information Form</h1>
- <form id="employeeForm">
- <label for="name">Employee Name:</label>
- <input type="text" id="name" name="name" required><br>
- <label for="basicSalary">Basic Salary:</label>
- <input type="number" id="basicSalary" name="basicSalary" required><br>
- <label for="hraPercentage">HRA Percentage:</label>
- <input type="number" id="hraPercentage" name="hraPercentage" required><br>
- <label for="daPercentage">DA Percentage:</label>
- <input type="number" id="daPercentage" name="daPercentage" required><br>
- <label for="taxPercentage">TAX Percentage:</label>
- <input type="number" id="taxPercentage" name="taxPercentage" required><br>
- <button type="button" onclick="calculatePay()">Calculate Pay</button>
- </form>
- <h2>Payroll Details</h2>
- <p id="da">DA: </p>
- <p id="hra">HRA: </p>
- <p id="pf">PF: </p>
- <p id="tax">TAX: </p>
- <p id="grossPay">Gross Pay: </p>
- <p id="deduction">Deduction: </p>
- <p id="netPay">Net Pay: </p>
- <script>
- function calculatePay() {
-   // Get form values
-   const name = document.getElementById('name').value;
-   const basicSalary = parseFloat(document.getElementById('basicSalary').value);
-   const hraPercentage = parseFloat(document.getElementById('hraPercentage').value);
-   const daPercentage = parseFloat(document.getElementById('daPercentage').value);
-   const taxPercentage = parseFloat(document.getElementById('taxPercentage').value);
-   
-   // Calculate allowances and deductions
-   const da = (daPercentage / 100) * basicSalary;
-   const hra = (hraPercentage / 100) * basicSalary;
-   const pf = 0.12 * basicSalary; // Assuming PF is 12% of the basic salary
-   const tax = (taxPercentage / 100) * basicSalary;
-   
-   // Calculate gross pay, deduction, and net pay
-   const grossPay = basicSalary + da + hra;
-   const deduction = pf + tax;
-   const netPay = grossPay - deduction;
-   
-   // Display results on the page
-   document.getElementById('da').innerText = `DA: ${da.toFixed(2)}`;
-   document.getElementById('hra').innerText = `HRA: ${hra.toFixed(2)}`;
-   document.getElementById('pf').innerText = `PF: ${pf.toFixed(2)}`;
-   document.getElementById('tax').innerText = `TAX: ${tax.toFixed(2)}`;
-   document.getElementById('grossPay').innerText = `Gross Pay: ${grossPay.toFixed(2)}`;
-   document.getElementById('deduction').innerText = `Deduction: ${deduction.toFixed(2)}`;
-   document.getElementById('netPay').innerText = `Net Pay: ${netPay.toFixed(2)}`;
- }
- </script>
+  <h1>Employee Payroll Dashboard</h1>
+
+  <form id="employeeForm">
+    <label>Employee Name:</label>
+    <input type="text" id="name" required />
+
+    <label>Basic Salary:</label>
+    <input type="number" id="basicSalary" required />
+
+    <label>HRA Percentage:</label>
+    <input type="number" id="hraPercentage" required />
+
+    <label>DA Percentage:</label>
+    <input type="number" id="daPercentage" required />
+
+    <label>PF Percentage:</label>
+    <input type="number" id="pfPercentage" value="12" required />
+
+    <label>Tax Percentage:</label>
+    <input type="number" id="taxPercentage" required />
+
+    <button type="button" onclick="addEmployee()">Add Employee</button>
+  </form>
+
+  <h2>Employee Records</h2>
+  <table id="employeeTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gross Pay</th>
+        <th>Deductions</th>
+        <th>Net Pay</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="totals">
+    Total Gross Pay: ₹<span id="totalGross">0.00</span> |
+    Total Net Pay: ₹<span id="totalNet">0.00</span>
+  </div>
+
+  <script>
+    let employeeId = 1;
+    let totalGross = 0;
+    let totalNet = 0;
+
+    function addEmployee() {
+      const name = document.getElementById("name").value;
+      const basicSalary = parseFloat(document.getElementById("basicSalary").value);
+      const hraPercentage = parseFloat(document.getElementById("hraPercentage").value);
+      const daPercentage = parseFloat(document.getElementById("daPercentage").value);
+      const pfPercentage = parseFloat(document.getElementById("pfPercentage").value);
+      const taxPercentage = parseFloat(document.getElementById("taxPercentage").value);
+
+      const hra = (hraPercentage / 100) * basicSalary;
+      const da = (daPercentage / 100) * basicSalary;
+      const pf = (pfPercentage / 100) * basicSalary;
+      const tax = (taxPercentage / 100) * basicSalary;
+
+      const gross = basicSalary + hra + da;
+      const deductions = pf + tax;
+      const net = gross - deductions;
+
+      // Update Totals
+      totalGross += gross;
+      totalNet += net;
+      updateTotals();
+
+      // Add to table
+      const table = document.querySelector("#employeeTable tbody");
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${employeeId++}</td>
+        <td>${name}</td>
+        <td>₹${gross.toFixed(2)}</td>
+        <td>₹${deductions.toFixed(2)}</td>
+        <td>₹${net.toFixed(2)}</td>
+        <td><button onclick="deleteRow(this, ${gross}, ${net})">Delete</button></td>
+      `;
+      table.appendChild(row);
+
+      // Clear form
+      document.getElementById("employeeForm").reset();
+    }
+
+    function deleteRow(button, gross, net) {
+      const row = button.parentElement.parentElement;
+      row.remove();
+      totalGross -= gross;
+      totalNet -= net;
+      updateTotals();
+    }
+
+    function updateTotals() {
+      document.getElementById("totalGross").innerText = totalGross.toFixed(2);
+      document.getElementById("totalNet").innerText = totalNet.toFixed(2);
+    }
+  </script>
 </body>
 </html>
