@@ -1,7 +1,6 @@
 # My R-N-D
 
 Simple Resources & UI Experimental Project — a place to practice and showcase UI experiments and small resources.
-Live demo: [rnd-by-smd.netlify.app](https://rnd-by-smd.netlify.app/)
 #
 
 ### About
@@ -20,7 +19,7 @@ This repository is a lightweight playground for UI ideas and resource examples. 
 #
 ### How to use
 1. Clone the repo:
-   git clone https://github.com/Thousifibrahim/My--R-N-D.git
+   git clone (https://github.com/Thousifibrahim/Experimental)
 2. Open `index.html` in your browser (or use a static server).
 #
 ### Contributing
